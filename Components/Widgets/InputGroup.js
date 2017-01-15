@@ -5,7 +5,7 @@ import React from 'react';
 import {View} from 'react-native';
 import NativeBaseComponent from '../Base/NativeBaseComponent';
 import Icon from './Icon';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@exponent/vector-icons';
 import Button from './Button';
 import computeProps from '../../Utils/computeProps';
 import Input from './Input';
