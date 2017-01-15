@@ -6,6 +6,7 @@ import { TouchableOpacity, Platform } from 'react-native';
 import NativeBaseComponent from '../Base/NativeBaseComponent';
 import computeProps from '../../Utils/computeProps';
 import IconNB from './Icon';
+import { Ionicons } from '@exponent/vector-icons';
 import Icon from './Icon';
 import Text from './Text';
 import _ from 'lodash';
@@ -141,7 +142,7 @@ export default class Button extends NativeBaseComponent {
     iconPresent() {
         var iconComponentPresent = false;
         React.Children.forEach(this.props.children, function (child) {
-            if(child.type == Icon)
+            if(child.type == Icon || child.type == Ionicons)
                 iconComponentPresent = true;
         })
         return iconComponentPresent;
@@ -152,7 +153,7 @@ export default class Button extends NativeBaseComponent {
             return <Text style={this.getTextStyle()}>{(Platform.OS==='ios' || !this.props.capitalize) ? this.props.children : this.props.children.toUpperCase()}</Text>
         }
 
-        else if(this.props.children.type == IconNB) {
+        else if(this.props.children.type == IconNB || Ionicons) {
             return React.cloneElement(this.props.children, this.getIconProps(this.props.children));
         }
 
@@ -163,7 +164,7 @@ export default class Button extends NativeBaseComponent {
 
             var iconElement = [];
             iconElement = _.remove(childrenArray, function(item) {
-                if(item.type == IconNB) {
+                if(item.type == IconNB || Ionicons) {
                     return true;
                 }
             });
